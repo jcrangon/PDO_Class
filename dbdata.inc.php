@@ -2,10 +2,10 @@
 $dbdata=[
 "driver"=>"mysql",
 "serveur"=>"localhost",
-"base"=>"keno_bdd",
+"base"=>"DBname",
 "port"=>"3306",
-"user"=>"kenoagent",
-"pass"=>"456thu781",
+"user"=>"user",
+"pass"=>"pass",
 "charset"=>"utf8mb4",
 "options"=>array(
 	//PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4",
