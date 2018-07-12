@@ -1,14 +1,12 @@
 # PDO_Class
-
+```ruby
 *// includes :*
-``
 include ("./dbdata.inc.php");
 require("./PDOcnx.php");
-``
+
 *// instanciation :*
-``
 $db=new PDOcnx($dbdata);
- ``
+
 *// connecting to the DB :*
 $db->connexion();
 if(!$db->isConnected()){
