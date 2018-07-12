@@ -1,5 +1,5 @@
 # PDO_Class
-
+[code]
 // includes :
 include ("./dbdata.inc.php");
 require("./PDOcnx.php");
