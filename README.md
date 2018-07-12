@@ -66,7 +66,7 @@ if($data===false){
 // both 'query' and 'execute' methods return an array containing 3 arrays
 // $data["result"] = containing le result set
 // $data["rowcount"] = containing the number of line returned in the result set
-// $data["closing] = boolean true -> statement memory has been correctly freed
+// $data["closing] = boolean true IF statement memory has been correctly freed
 
 // for INSERT, UPDATE, DELETE queries,
 // both 'query' and 'execute' methods return an array containing 2 arrays
