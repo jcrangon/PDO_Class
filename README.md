@@ -1,29 +1,29 @@
 # PDO_Class
 ```
-// includes :
+*// includes :*
 include ("./dbdata.inc.php");
 require("./PDOcnx.php");
 
-// instanciation :
+*// instanciation :*
 $db=new PDOcnx($dbdata);
  
-// connecting to the DB :
+*// connecting to the DB :*
 $db->connexion();
 if(!$db->isConnected()){
 	echo "Echec connexion :".$db->getPDOError();
 }
 
-// passing the PDO object only to another variable :
+*// passing the PDO object only to another variable :*
 $hdl=$db->get_handle();
 
-//destroying the handle :
+*//destroying the handle :*
 $hdl=null;
 unset($hdl);
 
-// using the 'query' method
+*// using the 'query' method
 // includes auto binding
 // default fetchstyle =PDO::FETCH_ASSOC
-// default result -> fetchall
+// default result -> fetchall*
 $serie=6852;
 $color="white";
 
@@ -43,10 +43,10 @@ if($data===false){
 	exit();
 }
 
-// using the 'execute' method
+*// using the 'execute' method
 // includes no binding
 // default fetchstyle =PDO::FETCH_ASSOC
-// default result -> fetchall
+// default result -> fetchall*
 $serie=6852;
 $color="white";
 
@@ -61,7 +61,7 @@ if($data===false){
 	exit();
 }
 
-// using the 'query' method with statement ONLY
+*// using the 'query' method with statement ONLY*
 $serie=6852;
 $color="white";
 
@@ -85,7 +85,7 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
 	echo $data["model"]."-".$data["serie"]."<br/>";
 }
 
-// using the 'execute' method with statement ONLY
+*// using the 'execute' method with statement ONLY*
 $serie=6852;
 $color="white";
 
@@ -104,8 +104,8 @@ while($data=$stmt->fetch(PDO::FETCH_NUM)){
 	echo $data[6]."-".$data[3]."<br/>";
 }
 
-// using the 'column_query' method :
-// search column can be expressed as a number or as a named field
+*// using the 'column_query' method :
+// search column can be expressed as a number or as a named field*
 $serie=6852;
 $color="white";
 
@@ -117,11 +117,11 @@ $tabparam=array(
     array('color',$color)
 );
 
-//EITHER :
+*//EITHER :*
 $col1=$db->column_query($req,$tabparam,2);
-// OR :
+*// OR :*
 $col2=$db->column_query($req,$tabparam,"model");
-// WILL WORK !
+*// WILL WORK !*
 
 if($col1===false || $col2===false){
 	$db->closecnx();
@@ -129,19 +129,19 @@ if($col1===false || $col2===false){
 	exit();
 }
 
-// using the 'column_execute' method :
-// search column can also be expressed as a number or as a named field
+*// using the 'column_execute' method :
+// search column can also be expressed as a number or as a named field*
 $serie=6852;
 $color="white";
 
 $req="SELECT * FROM car 
 		WHERE serie > ? AND color=?";
 
-//EITHER :
+*//EITHER :*
 $col1=$db->column_query($req,[$serie,$color],2);
-// OR :
+*// OR :*
 $col2=$db->column_query($req,[$serie,$color],"model");
-// WILL WORK !
+*// WILL WORK !*
 
 if($col1===false || $col2===false){
 	$db->closecnx();
@@ -149,9 +149,9 @@ if($col1===false || $col2===false){
 	exit();
 }
 
-// using the 'column_from_dataset' method :
+*// using the 'column_from_dataset' method :
 // first make a normal query using query or execute method
-// then send the resulting dataset to the column_from_dataset method
+// then send the resulting dataset to the column_from_dataset method*
 $serie=6852;
 $color="white";
 
@@ -171,21 +171,21 @@ if($data===false){
 	exit();
 }
 
-//EITHER :
+*//EITHER :*
 $col=$db->column_from_dataset($data["result"],2);
-// OR :
+*// OR :*
 $col=$db->column_from_dataset($data["result"],"date");
-// WILL WORK !
+*// WILL WORK !*
 
-// Transaction methods :
-$db->beginTn(); //starts transaction
-$db->endTn(); //commits transaction
-$db->cancelTn(); // rolls back transaction
+*// Transaction methods :*
+$db->beginTn(); *//starts transaction*
+$db->endTn(); *//commits transaction*
+$db->cancelTn(); *// rolls back transaction*
 
-// Last inserted ID method :
+*// Last inserted ID method :*
 $db->lastId();
 
-// debug dump method :
+*// debug dump method :*
 $db->debugDump($stmt);
 
-HAVE FUN !!
+**HAVE FUN !!**
