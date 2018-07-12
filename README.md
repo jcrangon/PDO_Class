@@ -1,8 +1,8 @@
 # PDO_Class
-```
+
 *// includes :*
-include ("./dbdata.inc.php");
-require("./PDOcnx.php");
+`include ("./dbdata.inc.php");
+require("./PDOcnx.php");`
 
 *// instanciation :*
 $db=new PDOcnx($dbdata);
