@@ -61,6 +61,19 @@ if($data===false){
 	exit();
 }
 
+// IMPORTANT !!
+// for SELECT and SHOW queries, 
+// both 'query' and 'execute' methods return an array containing 3 arrays
+// $data["result"] = containing le result set
+// $data["rowcount"] = containing the number of line returned in the result set
+// $data["clisong] = boolean true -> statement memory has been correctly freed
+
+// for INSERT, UPDATE, DELETE queries,
+// both 'query' and 'execute' methods return an array containing 2 arrays
+// $data["rowcount"]
+// $data["closing"]
+
+
 // using the 'query' method with statement ONLY
 $serie=6852;
 $color="white";
