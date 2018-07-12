@@ -6,7 +6,7 @@ require("./PDOcnx.php");
 
 // instanciation :
 $db=new PDOcnx($dbdata);
-
+ 
 // connecting to the DB :
 $db->connexion();
 if(!$db->isConnected()){
@@ -188,6 +188,4 @@ $db->lastId();
 // debug dump method :
 $db->debugDump($stmt);
 
-
-
-
+HAVE FUN !!
