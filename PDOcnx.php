@@ -201,6 +201,20 @@ class PDOcnx{
 		}
 	}
 	
+	protected function getFieldsInfos($tab){
+		if(!is_array($tab)){
+			return false;
+		}
+		$i=0;
+		$tabresult=array();
+		foreach($tab as $k=>$v){
+			$tabresult[0][]=$k;
+			$i++;
+		}
+		$tabresult[1]=$i;
+		return $tabresult;
+	}
+	
 	protected function getStmt($query,$tabparam){
 		$stmt=$this->_PDO_object->prepare($query);
 		$this->bind($stmt,$tabparam);
@@ -231,6 +245,13 @@ class PDOcnx{
 				$data["result"]= $stmt->fetchAll($fetchtype);
 				$data["rowcount"]=$stmt->rowCount();
 				$data["closing"]=$this->free_result($stmt);
+				if($fetchtype===PDO::FETCH_ASSOC && $data["rowcount"]!==0){
+					$tabfields=$this->getFieldsInfos($data["result"][0]);
+					if($tabfields!==false){
+						$data["fieldnames"]=$tabfields[0];
+						$data["fieldcount"]=$tabfields[1];
+					}
+				}
 				return $data;
 			}
 			elseif ($querytype === 'insert' || $querytype === 'update' || $querytype === 'delete') {
@@ -267,6 +288,13 @@ class PDOcnx{
 				$data["result"]= $stmt->fetchAll($fetchtype);
 				$data["rowcount"]=$stmt->rowCount();
 				$data["closing"]=$this->free_result($stmt);
+				if($fetchtype===PDO::FETCH_ASSOC && $data["rowcount"]!==0){
+					$tabfields=$this->getFieldsInfos($data["result"][0]);
+					if($tabfields!==false){
+						$data["fieldnames"]=$tabfields[0];
+						$data["fieldcount"]=$tabfields[1];
+					}
+				}
 				return $data;
 			}
 			elseif ($querytype === 'insert' || $querytype === 'update' || $querytype === 'delete') {
