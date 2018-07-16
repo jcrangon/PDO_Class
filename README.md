@@ -63,11 +63,19 @@ if($data===false){
 
 // IMPORTANT !!
 // for SELECT and SHOW queries, 
-// both 'query' and 'execute' methods return an array containing 3 arrays
-// $data["result"] = containing le result set
-// $data["rowcount"] = containing the number of line returned in the result set
-// $data["closing] = boolean true IF statement memory has been correctly freed
-
+// both 'query' and 'execute' methods return an array containing :
+//  - 5 arrays if $fetchtype=PDO::FETCH_ASSOC :
+// 	$data["result"] = containing le result set
+// 	$data["rowcount"] = containing the number of line returned in the result set
+// 	$data["closing] = boolean true IF statement memory has been correctly freed
+//	$data["fieldnames"]=array containing field names in the result set
+//	$data["fieldcount"]= integer - number of fields in the result set
+//
+//  - 3 arrays if $fetchtype other than PDO::FETCH_ASSOC :
+// 	$data["result"] = containing le result set
+// 	$data["rowcount"] = containing the number of line returned in the result set
+// 	$data["closing] = boolean true IF statement memory has been correctly freed
+//
 // for INSERT, UPDATE, DELETE queries,
 // both 'query' and 'execute' methods return an array containing 2 arrays
 // $data["rowcount"]
