@@ -260,7 +260,12 @@ class PDOcnx{
 				$stmt=$this->getStmt($query,$tabparam);
 				$data["rowcount"]=$stmt->rowCount();
 				return $data;
-			} 
+			}
+			elseif ($querytype === 'create') {
+				$stmt=$this->_PDO_object->prepare($query);
+				$data["result"]= $stmt->execute();
+				return $data;
+			}
 			else{
 				return NULL;
 			}
@@ -304,7 +309,12 @@ class PDOcnx{
 				$data["result"]= $stmt->execute($tabparam);
 				$data["rowcount"]=$stmt->rowCount();
 				return $data;
-			} 
+			}
+			elseif ($querytype === 'create') {
+				$stmt=$this->_PDO_object->prepare($query);
+				$data["result"]= $stmt->execute();
+				return $data;
+			}
 			else{
 				return NULL;
 			}
