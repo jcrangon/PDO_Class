@@ -217,7 +217,9 @@ class PDOcnx{
 	
 	protected function getStmt($query,$tabparam){
 		$stmt=$this->_PDO_object->prepare($query);
-		$this->bind($stmt,$tabparam);
+		if(sizeof($tabparam)>0){
+			$this->bind($stmt,$tabparam);
+		}
 		$stmt->execute();
 		return $stmt;
 	}
